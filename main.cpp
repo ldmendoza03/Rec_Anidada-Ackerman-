@@ -1,3 +1,14 @@
+/*
+ * Universidad de las Fuerzas Armadas "ESPE"
+ * Enunciado: Recursividad Anidada(Ackerman)
+ * Autor: Leandro Mendoza
+ * Fecha de Creacion: 13 de Noviembre del 2024
+ * Fecha de Modificacion: 13 de Noviembre del 2024
+ * NRC: 1978
+ * Curso: Estructura de Datos
+ * Docente: Edgar Fernando Solis Acosta
+ */
+
 #include <stdio.h>
 #include "operaciones.h"
 
