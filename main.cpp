@@ -45,13 +45,13 @@ int ingresar(const char* msj) {
 }
 
 int main() {
-    int n = ingresar("Introduce un número entero: ");
+    int n = ingresar("Introduce un numero entero: ");
 
     // Determina si el número es par o impar
     if (is_even(n)) {
-        printf("\nEl número %d es par.\n", n);
+        printf("\nEl numero %d es par.\n", n);
     } else {
-        printf("\nEl número %d es impar.\n", n);
+        printf("\nEl numero %d es impar.\n", n);
     }
     return 0;
 }
