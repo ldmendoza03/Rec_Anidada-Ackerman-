@@ -3,34 +3,55 @@
  * Enunciado: Recursividad Anidada(Ackerman)
  * Autor: Leandro Mendoza
  * Fecha de Creacion: 13 de Noviembre del 2024
- * Fecha de Modificacion: 13 de Noviembre del 2024
+ * Fecha de Modificacion: 14 de Noviembre del 2024
  * NRC: 1978
  * Curso: Estructura de Datos
  * Docente: Edgar Fernando Solis Acosta
  */
 
-#include <stdio.h>
+#include <iostream>  // Para std::cin y std::cout
+#include <cstdio>    // Para printf
+#include <cstdlib>   // Para atoi
+#include <cctype>    // Para isdigit
 #include "operaciones.h"
 
+// Función de ingreso de datos que usa std::cin para capturar enteros
+int ingresar(const char* msj) {
+    printf("%s", msj);
+    std::string input;
+    int valor;
+
+    // Ciclo para leer solo dígitos
+    while (true) {
+        std::getline(std::cin, input);
+        bool valid = true;
+
+        // Verifica que todos los caracteres en la entrada sean dígitos
+        for (char c : input) {
+            if (!isdigit(c)) {
+                valid = false;
+                break;
+            }
+        }
+
+        if (valid && !input.empty()) {
+            valor = std::stoi(input);  // Convierte la entrada a entero
+            break;
+        } else {
+            printf("Entrada no válida. Introduce un número entero: ");
+        }
+    }
+    return valor;
+}
+
 int main() {
-    int m, n;
+    int n = ingresar("Introduce un número entero: ");
 
-    // Solicita el valor de m al usuario
-    printf("Introduce el valor de m (entre 0 y 3): ");
-    while (scanf("%d", &m) != 1 || m < 0 || m > 3) {  // Limitando m a un máximo de 3
-        printf("Entrada no válida. Introduce un número entero no negativo para m (máximo 3): ");
-        while (getchar() != '\n'); // Limpia el buffer de entrada
+    // Determina si el número es par o impar
+    if (is_even(n)) {
+        printf("\nEl número %d es par.\n", n);
+    } else {
+        printf("\nEl número %d es impar.\n", n);
     }
-
-    // Solicita el valor de n al usuario
-    printf("Introduce el valor de n (entre 0 y 10): ");
-    while (scanf("%d", &n) != 1 || n < 0 || n > 10) {  // Limitando n a un máximo de 10
-        printf("Entrada no válida. Introduce un número entero no negativo para n (máximo 10): ");
-        while (getchar() != '\n'); // Limpia el buffer de entrada
-    }
-
-    printf("Calculando Ackermann de (%d, %d)...\n", m, n);
-    printf("Resultado: %d\n", ackermann(m, n));
-
     return 0;
 }
