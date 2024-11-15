@@ -1,6 +1,6 @@
 /*
  * Universidad de las Fuerzas Armadas "ESPE"
- * Enunciado: Recursividad Anidada(Ackerman)
+ * Enunciado: Recursividad Anidada (Ackerman)
  * Autor: Leandro Mendoza
  * Fecha de Creacion: 13 de Noviembre del 2024
  * Fecha de Modificacion: 14 de Noviembre del 2024
@@ -9,49 +9,32 @@
  * Docente: Edgar Fernando Solis Acosta
  */
 
-#include <iostream>  // Para std::cin y std::cout
-#include <cstdio>    // Para printf
-#include <cstdlib>   // Para atoi
-#include <cctype>    // Para isdigit
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "operaciones.h"
 
-// Función de ingreso de datos que usa std::cin para capturar enteros
-int ingresar(const char* msj) {
+// Función de ingreso de datos que usa getch para capturar enteros
+int ingresar(const char *msj) {
     printf("%s", msj);
-    std::string input;
-    int valor;
+    char cad[10], c;
+    int valor, i = 0;
 
-    // Ciclo para leer solo dígitos
-    while (true) {
-        std::getline(std::cin, input);
-        bool valid = true;
-
-        // Verifica que todos los caracteres en la entrada sean dígitos
-        for (char c : input) {
-            if (!isdigit(c)) {
-                valid = false;
-                break;
-            }
-        }
-
-        if (valid && !input.empty()) {
-            valor = std::stoi(input);  // Convierte la entrada a entero
-            break;
-        } else {
-            printf("Entrada no válida. Introduce un número entero: ");
+    while ((c = getch()) != 13) { // 13 es el código ASCII para Enter
+        if (c >= '0' && c <= '9' && i < 9) {
+            printf("%c", c); // Mostrar el dígito ingresado
+            cad[i++] = c;
         }
     }
+    cad[i] = '\0';
+    valor = atoi(cad); // Convertir la entrada a entero
     return valor;
 }
 
 int main() {
-    int n = ingresar("Introduce un numero entero: ");
+    int m = ingresar("Introduce el valor de m: ");
+    int n = ingresar("\nIntroduce el valor de n: ");
 
-    // Determina si el número es par o impar
-    if (is_even(n)) {
-        printf("\nEl numero %d es par.\n", n);
-    } else {
-        printf("\nEl numero %d es impar.\n", n);
-    }
+    printf("\nAckermann de (%d, %d): %d\n", m, n, ackermann(m, n));
     return 0;
 }
